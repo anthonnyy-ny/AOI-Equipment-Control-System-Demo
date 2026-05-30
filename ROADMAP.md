@@ -1,6 +1,6 @@
 # AOI Equipment Control System Demo Roadmap
 
-这个 roadmap 用来整理项目开发方向，方便审核目前进度和下一步计划。
+这个 roadmap 用来整理项目开发方向，方便查看目前进度和下一步计划。
 
 ## 项目目标
 
@@ -33,7 +33,6 @@
 - Current Alarm Message 显示
 - 流程步骤 log
 - MainForm 基础 HMI
-- 基础操作按钮与 Log 显示
 
 尚未开始：
 
@@ -78,15 +77,7 @@
 - Log display area
 - Result DataGridView
 - 新增 `MachineService`
-- 实作基础状态转换：
-  - `Idle`
-  - `Initializing`
-  - `Ready`
-  - `Running`
-  - `Inspecting`
-  - `Completed`
-  - `Alarm`
-  - `Stopped`
+- 实作基础状态转换：`Idle`、`Initializing`、`Ready`、`Running`、`Inspecting`、`Completed`、`Alarm`、`Stopped`
 
 ## Phase 3 - Recipe 管理
 
@@ -114,7 +105,7 @@
 完成内容：
 
 - 整理 MachineService 状态转换规则
-- 加入状态检查
+- 加入状态转换检查
 - 加入更清楚的 alarm message
 - 加入流程步骤 log
 - 让 UI 更清楚显示当前状态
@@ -125,18 +116,25 @@
 
 目标：模拟上位机与设备之间的 TCP/IP 通讯。
 
+建议拆分：
+
+- Phase 5A：新增 DeviceSimulatorServer，可以接收 command 并回传基础 response。
+- Phase 5B：新增 TcpClientService，让 HMI 可以 connect / disconnect simulator。
+- Phase 5C：让自动流程开始使用 TCP command 模拟设备动作。
+- Phase 5D：加入 timeout、retry、error code 和 alarm handling。
+
 计划内容：
 
 - 新增 TCP client service
 - 新增 device simulator server
-- 支援基础 command：
+- 支持基础 command：
   - `INIT`
   - `HOME`
   - `MOVE`
   - `LIGHT ON`
   - `CAPTURE`
   - `RESET`
-- 支援基础 response：
+- 支持基础 response：
   - `OK`
   - `DONE`
   - `ERROR`

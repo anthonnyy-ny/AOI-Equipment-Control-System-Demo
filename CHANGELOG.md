@@ -7,15 +7,37 @@
 ## [Unreleased]
 
 ### Added
-- 完成 Phase 3 Recipe 管理，支持从 `Config/recipe.json` 读取、显示、编辑并保存 Recipe 参数。
-- MainForm 新增 `Save Recipe` 按钮。
-- `RecipeService` 新增 Recipe JSON 保存功能，并输出格式化 JSON。
-- 完成 Phase 4 State Machine 强化，新增明确状态转换检查、Alarm message 和流程步骤 log。
-- MainForm 新增 Current Alarm Message 显示。
+- Phase 5 TCP/IP Device Simulator 的功能规划与实现内容。
+- 新增 `DOC_SYNC_CHECKLIST.md`，作为功能完成、Phase 推进和版本发布前的文档同步检查表。
 
 ### Changed
-- `LoggerService` 改为将 machine log 写入项目资料夹 `AOIEquipmentControlSystem/Logs`，方便直接查看运行记录。
+- 更新 `AGENTS.md`，加入文档同步规则，要求关键节点参考 `DOC_SYNC_CHECKLIST.md`。
+- 更新 `README.md`，补充 `DOC_SYNC_CHECKLIST.md` 文件说明。
+
+## [0.4.0] - 2026-05-31
+
+### Added
+- 完成 Phase 4 State Machine 强化。
+- `MachineService` 新增更明确的状态转换检查。
+- 新增 Current Alarm Message 显示。
+- 新增自动流程步骤 log，方便追踪机台执行过程。
+
+### Changed
+- 改善 UI 状态显示，让当前机台状态和 alarm 信息更清楚。
 - 更新 README、ROADMAP、TASKS，记录 Phase 4 完成状态。
+
+## [0.3.0] - 2026-05-31
+
+### Added
+- 完成 Phase 3 Recipe 管理。
+- 新增 `RecipeService`。
+- 支持从 `Config/recipe.json` 读取 recipe。
+- 支持在 MainForm 显示实际 recipe 参数。
+- 新增 `Save Recipe` 按钮。
+- 支持编辑 recipe 参数并保存回 JSON。
+
+### Changed
+- Recipe 保存成功或失败时会写入 Machine Log。
 - 更新 README、ROADMAP、TASKS，记录 Phase 3 完成状态。
 
 ## [0.2.1] - 2026-05-31
@@ -25,6 +47,7 @@
 - 新增 `.editorconfig`，统一编码、换行、缩排与基础 C# 风格。
 - 新增 `.gitkeep`，保留 Logs、Results、Images/Sample、Images/Result 等资料夹结构。
 - 新增 `CHANGELOG.md`，记录版本修改说明。
+- 新增 `CHANGE_REQUESTS.md`，记录临时需求和功能变更。
 
 ### Changed
 - 更新 `.gitignore`，忽略 Logs、Results、Images/Result 内的运行产物。
@@ -32,7 +55,6 @@
 - MainForm 改用动态 layout panels，减少窗口缩放时文字被遮住的问题。
 - 调整 MainForm 垂直空间分配，让 Recipe Parameters 和 Machine Log 更容易阅读。
 - Machine Log 新增编号区块 header，方便辨识同一次 UI 操作产生的 log。
-- Machine Log header 改为蓝色多行显示，凸显 Update、Action、Time、State 信息。
 
 ## [0.2.0] - 2026-05-30
 

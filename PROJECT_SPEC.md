@@ -25,7 +25,9 @@
 - 停止机台
 - 重置异常
 - 读取 Recipe 参数
+- 编辑并保存 Recipe 参数
 - 查看机台状态
+- 查看 alarm message
 - 查看检测图片
 - 查看 OK / NG 检测结果
 - 输出检测结果
@@ -39,11 +41,12 @@ WinForms 主画面需要包含：
 - Stop 按钮
 - Reset 按钮
 - Clear Alarm 按钮
+- Save Recipe 按钮
 - Machine Status Label
 - Device Connection Status Label
 - Current Alarm Message 显示
 - Recipe Name 显示
-- 参数显示区域
+- 参数显示与编辑区域
 - Original Image 显示区域
 - Processed Image 显示区域
 - Inspection Result 显示区域
@@ -80,6 +83,14 @@ Example fields：
 - SavePath
 - MaxRetryCount
 
+系统需要支持：
+
+- 从 JSON 读取 Recipe
+- 在 HMI 显示 Recipe
+- 在 HMI 编辑 Recipe
+- 保存 Recipe 回 JSON
+- 保存成功或失败时写入 Log
+
 ## 6. 通讯需求
 
 系统需要模拟 TCP/IP 与外部设备通讯。
@@ -103,7 +114,7 @@ Example responses：
 - ERROR: LIMIT_SENSOR_ALARM
 - ERROR: CAMERA_CAPTURE_FAILED
 
-系统需要支援：
+系统需要支持：
 
 - Timeout handling
 - Retry handling
@@ -117,16 +128,18 @@ Example responses：
 
 Basic flow：
 
+```text
 Original Image
-→ ROI Crop
-→ Grayscale
-→ Blur
-→ Threshold
-→ Find Contours
-→ Measure Area
-→ OK / NG Judgement
-→ Save Processed Image
-→ Export Result
+-> ROI Crop
+-> Grayscale
+-> Blur
+-> Threshold
+-> Find Contours
+-> Measure Area
+-> OK / NG Judgement
+-> Save Processed Image
+-> Export Result
+```
 
 ## 8. 输出需求
 
@@ -138,7 +151,9 @@ Original Image
 
 CSV format：
 
+```text
 Time,ImageName,ProductName,Area,Threshold,Result,ImagePath
+```
 
 ## 9. 未来改善方向
 

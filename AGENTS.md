@@ -83,15 +83,15 @@ AOIEquipmentControlSystem/
 
 ```text
 Initialize
-→ Connect Device
-→ Load Recipe
-→ Home
-→ Move To Capture Position
-→ Turn On Light
-→ Capture Image
-→ Run AOI Inspection
-→ Save Result
-→ Complete
+-> Connect Device
+-> Load Recipe
+-> Home
+-> Move To Capture Position
+-> Turn On Light
+-> Capture Image
+-> Run AOI Inspection
+-> Save Result
+-> Complete
 ```
 
 ## 开发风格
@@ -104,10 +104,18 @@ Initialize
 4. 重要的工业自动化概念请加注释。
 5. 完成后总结修改了哪些文件。
 6. 说明如何运行或验证功能。
-7. 每次完成或推进一个 Phase 后，要同步更新 Markdown 进度文件：
-   - `TASKS.md` 勾选完成项目。
-   - `ROADMAP.md` 更新当前 Phase 状态。
-   - 必要时更新 `README.md` 的目前开发状态和验证说明。
+7. 每次完成或推进一个 Phase 后，要同步更新 Markdown 进度文件。
+
+## 文档同步规则
+
+- 项目使用 `DOC_SYNC_CHECKLIST.md` 管理文档同步检查。
+- 不需要每一次小修改都更新所有 Markdown。
+- 完成功能、推进 Phase、接受需求、修改操作流程或准备发布版本时，必须参考 `DOC_SYNC_CHECKLIST.md`。
+- 只更新和本次改动有关的文档，避免为了文档而文档。
+- 如果功能改变使用方式，通常需要更新 `README.md`。
+- 如果功能改变系统规格，通常需要更新 `PROJECT_SPEC.md`。
+- 如果 Phase 状态改变，必须更新 `ROADMAP.md` 和 `TASKS.md`。
+- 如果准备 commit、tag 或 release，必须检查 `CHANGELOG.md`。
 
 ## 版本记录规则
 
@@ -148,3 +156,4 @@ Initialize
 - UI 可以展示该功能。
 - 需要时可以产生 Log 或结果输出。
 - 如果功能改变使用方式，要更新 README 或 docs。
+- 根据 `DOC_SYNC_CHECKLIST.md` 检查是否需要同步其他 Markdown。

@@ -37,7 +37,8 @@
 - [x] 新增 RecipeService
 - [x] 从 Config/recipe.json 读取 recipe
 - [x] 在 UI 显示实际 recipe
-- [x] 将 recipe 修改保存回 JSON（Phase 3B）
+- [x] 将 recipe 修改保存回 JSON
+- [x] 保存成功或失败写入 Log
 
 ## Phase 4 - State Machine 强化
 
@@ -49,6 +50,7 @@
 
 ## Phase 5 - TCP Device Simulator
 
+- [ ] 定义 TCP command / response protocol
 - [ ] 新增 TCP client service
 - [ ] 新增 device simulator server
 - [ ] 从 controller 发送 command 到 simulator
