@@ -12,7 +12,7 @@
 
 ## 目前开发状态
 
-目前完成 Phase 2：基础 HMI 与简单 MachineService 骨架。
+目前完成 Phase 4：State Machine 强化。
 
 已完成内容：
 
@@ -20,8 +20,12 @@
 - 建立 `MachineState`、`Recipe`、`InspectionResult` model
 - 建立 `LoggerService`
 - 建立 `MachineService`
+- 建立 `RecipeService`
 - 建立 MainForm 基础 HMI 画面
-- HMI 可以显示机台状态、设备连接状态、固定 Recipe 参数、Log 讯息和基础 Result 表格
+- HMI 可以显示机台状态、设备连接状态、实际 JSON Recipe 参数、Log 讯息和基础 Result 表格
+- Recipe 可以从 `Config/recipe.json` 读取、显示、编辑，并保存回 JSON
+- MachineService 已强化状态转换规则、Alarm message 和流程步骤 log
+- HMI 可以显示 Current Alarm Message
 
 暂时尚未实作：
 
@@ -46,7 +50,8 @@ AOIEquipmentControlSystem/
 │   └── InspectionResult.cs
 ├── Services/
 │   ├── LoggerService.cs
-│   └── MachineService.cs
+│   ├── MachineService.cs
+│   └── RecipeService.cs
 ├── Config/
 │   └── recipe.json
 ├── Logs/
@@ -63,8 +68,10 @@ MainForm 目前包含：
 - Stop button
 - Reset button
 - Clear Alarm button
+- Save Recipe button
 - Machine Status label
 - Device Connection Status label
+- Current Alarm Message label
 - Recipe parameter display area
 - Log display area
 - Result DataGridView
@@ -88,9 +95,47 @@ Start Auto
 ```text
 程序启动后直接按 Start Auto
 → MachineState 进入 Alarm
-→ Log 显示 Cannot start auto. Machine is not ready.
+→ Alarm Message 显示 Cannot start auto. Machine is not ready.
+→ Log 显示 ALARM: Cannot start auto. Machine is not ready.
 → 按 Clear Alarm 或 Reset 回到 Idle
 ```
+
+## State Machine 验证
+
+正常流程：
+
+1. 启动 WinForms 程序。
+2. 确认 `Machine Status` 为 `Idle`。
+3. 点击 `Initialize`。
+4. 确认状态变成 `Ready`。
+5. 点击 `Start Auto`。
+6. 确认 Machine Log 显示完整流程步骤：
+   - Check machine ready
+   - Move to capture position
+   - Turn on light
+   - Capture image
+   - Run inspection
+   - Save result
+   - Complete cycle
+7. 确认状态最后回到 `Ready`。
+
+异常流程：
+
+1. 启动 WinForms 程序。
+2. 不按 `Initialize`，直接点击 `Start Auto`。
+3. 确认状态进入 `Alarm`。
+4. 确认 `Alarm Message` 显示 `Cannot start auto. Machine is not ready.`。
+5. 点击 `Clear Alarm`。
+6. 确认状态回到 `Idle`，`Alarm Message` 显示 `None`。
+
+Stop / Reset 流程：
+
+1. 点击 `Initialize` 后点击 `Stop`。
+2. 确认状态变成 `Stopped`。
+3. 在 `Stopped` 状态点击 `Start Auto`。
+4. 确认进入 `Alarm` 或显示明确拒绝讯息。
+5. 点击 `Reset`。
+6. 确认状态回到 `Idle`，设备显示 `Disconnected`，`Alarm Message` 显示 `None`。
 
 ## 如何验证
 
@@ -104,9 +149,25 @@ dotnet build .\AOIEquipmentControlSystem\AOIEquipmentControlSystem.csproj
 
 也可以使用 Visual Studio 打开项目后按下 Start 执行 WinForms 程序，并依照上方正常流程与异常流程测试按钮操作。
 
-## Maintenance Update - 2026-05-30
-- MainForm now uses dynamic layout panels for command buttons, status fields, Recipe, Log, and Result areas.
-- Verify with: dotnet build .\AOIEquipmentControlSystem\AOIEquipmentControlSystem.csproj, then resize the WinForms window and confirm controls do not cover text.
-- Recipe Parameters and Machine Log now receive more vertical space, while Inspection Result uses a shorter balanced area.
-- Machine Log now adds numbered update headers, such as `Update #002 | Start Auto`, to show which messages belong to the same operation.
-- Machine Log headers now use a blue multi-line block with Update, Action, Time, and State fields.
+## Recipe 保存验证
+
+手动测试步骤：
+
+1. 启动 WinForms 程序。
+2. 确认 Recipe Parameters 区域显示来自 `Config/recipe.json` 的参数。
+3. 修改 `ProductName` 或 `Threshold`。
+4. 点击 `Save Recipe`。
+5. 确认 Machine Log 显示 `Recipe saved successfully.`。
+6. 关闭程序后重新启动。
+7. 确认修改后的 Recipe 仍然显示在 UI 上。
+8. 打开 `AOIEquipmentControlSystem/Config/recipe.json`，确认 JSON 已更新且格式可读。
+
+## Log 文件验证
+
+程序运行时，Machine Log 会实时写入：
+
+```text
+AOIEquipmentControlSystem/Logs/yyyy-MM-dd_machine_log.txt
+```
+
+可以点击 `Initialize`、`Start Auto`、`Reset` 等按钮后打开当天 log 文件，确认最新操作已经追加到文件末尾。

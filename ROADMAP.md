@@ -18,7 +18,7 @@
 
 ## 当前状态
 
-目前完成到 Phase 2。
+目前完成到 Phase 4。
 
 已具备：
 
@@ -27,12 +27,16 @@
 - 基础 Models
 - LoggerService
 - MachineService 基础状态控制
+- RecipeService
+- JSON Recipe 读取、显示、编辑与保存
+- MachineService 状态转换规则强化
+- Current Alarm Message 显示
+- 流程步骤 log
 - MainForm 基础 HMI
 - 基础操作按钮与 Log 显示
 
 尚未开始：
 
-- RecipeService
 - TCP/IP Device Simulator
 - OpenCvSharp AOI inspection
 - CSV result export
@@ -86,26 +90,28 @@
 
 ## Phase 3 - Recipe 管理
 
-状态：下一阶段
+状态：已完成
 
-目标：让系统从 JSON 读取 recipe，并显示在 HMI 上。
+目标：让系统从 JSON 读取 recipe，显示在 HMI 上，并允许使用者编辑保存。
 
-计划内容：
+完成内容：
 
 - 新增 `RecipeService`
 - 从 `Config/recipe.json` 读取 recipe
 - 将 recipe 参数显示到 MainForm
-- 后续可加入 recipe 修改和保存功能
+- 在 MainForm 编辑 recipe 参数
+- 保存 recipe 回 `Config/recipe.json`
+- 保存成功或失败都会写入 Log
 
 注意：本阶段不做 AOI 检测，只处理 recipe 资料管理。
 
 ## Phase 4 - State Machine 强化
 
-状态：规划中
+状态：已完成
 
 目标：让机台状态控制更接近真实设备软件。
 
-计划内容：
+完成内容：
 
 - 整理 MachineService 状态转换规则
 - 加入状态检查
@@ -115,7 +121,7 @@
 
 ## Phase 5 - TCP/IP Device Simulator
 
-状态：规划中
+状态：下一阶段
 
 目标：模拟上位机与设备之间的 TCP/IP 通讯。
 
@@ -195,9 +201,3 @@
 - 真实相机 SDK
 - 真实 PLC / motion controller
 - 真实公司资料或真实机台参数
-
-## Maintenance Update - 2026-05-30
-- Phase 2 HMI layout was adjusted to use dynamic WinForms panels so text is not covered during resize.
-- Phase 2 HMI layout was rebalanced to make Recipe Parameters and Machine Log more readable.
-- Phase 2 Machine Log now groups each UI operation with a numbered update header.
-- Phase 2 Machine Log headers were made more visible with blue multi-line operation blocks.

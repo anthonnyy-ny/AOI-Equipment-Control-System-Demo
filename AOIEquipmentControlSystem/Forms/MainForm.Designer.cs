@@ -40,9 +40,13 @@ namespace AOIEquipmentControlSystem
             machineStatusValueLabel = new Label();
             deviceStatusTitleLabel = new Label();
             deviceStatusValueLabel = new Label();
+            alarmMessageTitleLabel = new Label();
+            alarmMessageValueLabel = new Label();
             detailTableLayoutPanel = new TableLayoutPanel();
             recipeGroupBox = new GroupBox();
+            recipeLayoutPanel = new TableLayoutPanel();
             recipeTextBox = new TextBox();
+            saveRecipeButton = new Button();
             logGroupBox = new GroupBox();
             logTextBox = new RichTextBox();
             resultGroupBox = new GroupBox();
@@ -52,6 +56,7 @@ namespace AOIEquipmentControlSystem
             statusTableLayoutPanel.SuspendLayout();
             detailTableLayoutPanel.SuspendLayout();
             recipeGroupBox.SuspendLayout();
+            recipeLayoutPanel.SuspendLayout();
             logGroupBox.SuspendLayout();
             resultGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)resultDataGridView).BeginInit();
@@ -71,7 +76,7 @@ namespace AOIEquipmentControlSystem
             mainLayoutPanel.Padding = new Padding(16);
             mainLayoutPanel.RowCount = 4;
             mainLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            mainLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
+            mainLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 82F));
             mainLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
             mainLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 55F));
             mainLayoutPanel.Size = new Size(1844, 964);
@@ -158,13 +163,17 @@ namespace AOIEquipmentControlSystem
             statusTableLayoutPanel.Controls.Add(machineStatusValueLabel, 1, 0);
             statusTableLayoutPanel.Controls.Add(deviceStatusTitleLabel, 2, 0);
             statusTableLayoutPanel.Controls.Add(deviceStatusValueLabel, 3, 0);
+            statusTableLayoutPanel.Controls.Add(alarmMessageTitleLabel, 0, 1);
+            statusTableLayoutPanel.Controls.Add(alarmMessageValueLabel, 1, 1);
             statusTableLayoutPanel.Dock = DockStyle.Fill;
             statusTableLayoutPanel.Location = new Point(16, 66);
             statusTableLayoutPanel.Margin = new Padding(0, 0, 0, 8);
             statusTableLayoutPanel.Name = "statusTableLayoutPanel";
-            statusTableLayoutPanel.RowCount = 1;
-            statusTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            statusTableLayoutPanel.Size = new Size(1812, 34);
+            statusTableLayoutPanel.RowCount = 2;
+            statusTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            statusTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            statusTableLayoutPanel.SetColumnSpan(alarmMessageValueLabel, 3);
+            statusTableLayoutPanel.Size = new Size(1812, 74);
             statusTableLayoutPanel.TabIndex = 1;
             // 
             // machineStatusTitleLabel
@@ -215,6 +224,30 @@ namespace AOIEquipmentControlSystem
             deviceStatusValueLabel.Text = "Disconnected";
             deviceStatusValueLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // alarmMessageTitleLabel
+            // 
+            alarmMessageTitleLabel.Anchor = AnchorStyles.Left;
+            alarmMessageTitleLabel.AutoSize = true;
+            alarmMessageTitleLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            alarmMessageTitleLabel.Location = new Point(0, 37);
+            alarmMessageTitleLabel.Margin = new Padding(0, 0, 8, 0);
+            alarmMessageTitleLabel.Name = "alarmMessageTitleLabel";
+            alarmMessageTitleLabel.Size = new Size(212, 34);
+            alarmMessageTitleLabel.TabIndex = 9;
+            alarmMessageTitleLabel.Text = "Alarm Message:";
+            // 
+            // alarmMessageValueLabel
+            // 
+            alarmMessageValueLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            alarmMessageValueLabel.BorderStyle = BorderStyle.FixedSingle;
+            alarmMessageValueLabel.Location = new Point(227, 41);
+            alarmMessageValueLabel.Margin = new Padding(0);
+            alarmMessageValueLabel.Name = "alarmMessageValueLabel";
+            alarmMessageValueLabel.Size = new Size(1585, 28);
+            alarmMessageValueLabel.TabIndex = 10;
+            alarmMessageValueLabel.Text = "None";
+            alarmMessageValueLabel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // detailTableLayoutPanel
             // 
             detailTableLayoutPanel.ColumnCount = 2;
@@ -223,38 +256,65 @@ namespace AOIEquipmentControlSystem
             detailTableLayoutPanel.Controls.Add(recipeGroupBox, 0, 0);
             detailTableLayoutPanel.Controls.Add(logGroupBox, 1, 0);
             detailTableLayoutPanel.Dock = DockStyle.Fill;
-            detailTableLayoutPanel.Location = new Point(16, 108);
+            detailTableLayoutPanel.Location = new Point(16, 148);
             detailTableLayoutPanel.Margin = new Padding(0, 0, 0, 12);
             detailTableLayoutPanel.Name = "detailTableLayoutPanel";
             detailTableLayoutPanel.RowCount = 1;
             detailTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            detailTableLayoutPanel.Size = new Size(1812, 375);
+            detailTableLayoutPanel.Size = new Size(1812, 357);
             detailTableLayoutPanel.TabIndex = 2;
             // 
             // recipeGroupBox
             // 
-            recipeGroupBox.Controls.Add(recipeTextBox);
+            recipeGroupBox.Controls.Add(recipeLayoutPanel);
             recipeGroupBox.Dock = DockStyle.Fill;
             recipeGroupBox.Location = new Point(0, 0);
             recipeGroupBox.Margin = new Padding(0, 0, 8, 0);
             recipeGroupBox.Name = "recipeGroupBox";
             recipeGroupBox.Padding = new Padding(12);
-            recipeGroupBox.Size = new Size(716, 375);
+            recipeGroupBox.Size = new Size(716, 357);
             recipeGroupBox.TabIndex = 9;
             recipeGroupBox.TabStop = false;
             recipeGroupBox.Text = "Recipe Parameters";
             // 
+            // recipeLayoutPanel
+            // 
+            recipeLayoutPanel.ColumnCount = 1;
+            recipeLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            recipeLayoutPanel.Controls.Add(recipeTextBox, 0, 0);
+            recipeLayoutPanel.Controls.Add(saveRecipeButton, 0, 1);
+            recipeLayoutPanel.Dock = DockStyle.Fill;
+            recipeLayoutPanel.Location = new Point(12, 43);
+            recipeLayoutPanel.Margin = new Padding(0);
+            recipeLayoutPanel.Name = "recipeLayoutPanel";
+            recipeLayoutPanel.RowCount = 2;
+            recipeLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            recipeLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            recipeLayoutPanel.Size = new Size(692, 302);
+            recipeLayoutPanel.TabIndex = 0;
+            // 
             // recipeTextBox
             // 
             recipeTextBox.Dock = DockStyle.Fill;
-            recipeTextBox.Location = new Point(12, 43);
+            recipeTextBox.Location = new Point(0, 0);
             recipeTextBox.Margin = new Padding(0);
             recipeTextBox.Multiline = true;
             recipeTextBox.Name = "recipeTextBox";
-            recipeTextBox.ReadOnly = true;
             recipeTextBox.ScrollBars = ScrollBars.Vertical;
-            recipeTextBox.Size = new Size(692, 320);
+            recipeTextBox.Size = new Size(692, 258);
             recipeTextBox.TabIndex = 0;
+            // 
+            // saveRecipeButton
+            // 
+            saveRecipeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            saveRecipeButton.Location = new Point(542, 264);
+            saveRecipeButton.Margin = new Padding(0, 6, 0, 0);
+            saveRecipeButton.Name = "saveRecipeButton";
+            saveRecipeButton.Size = new Size(150, 34);
+            saveRecipeButton.TabIndex = 1;
+            saveRecipeButton.Text = "Save Recipe";
+            saveRecipeButton.UseVisualStyleBackColor = true;
+            saveRecipeButton.Click += SaveRecipeButton_Click;
             // 
             // logGroupBox
             // 
@@ -264,7 +324,7 @@ namespace AOIEquipmentControlSystem
             logGroupBox.Margin = new Padding(8, 0, 0, 0);
             logGroupBox.Name = "logGroupBox";
             logGroupBox.Padding = new Padding(12);
-            logGroupBox.Size = new Size(1080, 375);
+            logGroupBox.Size = new Size(1080, 357);
             logGroupBox.TabIndex = 10;
             logGroupBox.TabStop = false;
             logGroupBox.Text = "Machine Log";
@@ -276,18 +336,18 @@ namespace AOIEquipmentControlSystem
             logTextBox.Margin = new Padding(0);
             logTextBox.Name = "logTextBox";
             logTextBox.ReadOnly = true;
-            logTextBox.Size = new Size(1056, 320);
+            logTextBox.Size = new Size(1056, 302);
             logTextBox.TabIndex = 0;
             // 
             // resultGroupBox
             // 
             resultGroupBox.Controls.Add(resultDataGridView);
             resultGroupBox.Dock = DockStyle.Fill;
-            resultGroupBox.Location = new Point(16, 495);
+            resultGroupBox.Location = new Point(16, 517);
             resultGroupBox.Margin = new Padding(0);
             resultGroupBox.Name = "resultGroupBox";
             resultGroupBox.Padding = new Padding(12);
-            resultGroupBox.Size = new Size(1812, 453);
+            resultGroupBox.Size = new Size(1812, 431);
             resultGroupBox.TabIndex = 11;
             resultGroupBox.TabStop = false;
             resultGroupBox.Text = "Inspection Result";
@@ -304,7 +364,7 @@ namespace AOIEquipmentControlSystem
             resultDataGridView.Name = "resultDataGridView";
             resultDataGridView.ReadOnly = true;
             resultDataGridView.RowHeadersWidth = 82;
-            resultDataGridView.Size = new Size(1788, 398);
+            resultDataGridView.Size = new Size(1788, 376);
             resultDataGridView.TabIndex = 0;
             // 
             // MainForm
@@ -323,7 +383,8 @@ namespace AOIEquipmentControlSystem
             statusTableLayoutPanel.PerformLayout();
             detailTableLayoutPanel.ResumeLayout(false);
             recipeGroupBox.ResumeLayout(false);
-            recipeGroupBox.PerformLayout();
+            recipeLayoutPanel.ResumeLayout(false);
+            recipeLayoutPanel.PerformLayout();
             logGroupBox.ResumeLayout(false);
             logGroupBox.PerformLayout();
             resultGroupBox.ResumeLayout(false);
@@ -346,8 +407,12 @@ namespace AOIEquipmentControlSystem
         private Label machineStatusValueLabel;
         private Label deviceStatusTitleLabel;
         private Label deviceStatusValueLabel;
+        private Label alarmMessageTitleLabel;
+        private Label alarmMessageValueLabel;
         private GroupBox recipeGroupBox;
+        private TableLayoutPanel recipeLayoutPanel;
         private TextBox recipeTextBox;
+        private Button saveRecipeButton;
         private GroupBox logGroupBox;
         private RichTextBox logTextBox;
         private GroupBox resultGroupBox;

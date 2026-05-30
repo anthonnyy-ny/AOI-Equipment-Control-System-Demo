@@ -8,6 +8,7 @@ namespace AOIEquipmentControlSystem.Services
 
         public MachineState CurrentState { get; private set; } = MachineState.Idle;
         public bool IsDeviceConnected { get; private set; }
+        public string CurrentAlarmMessage { get; private set; } = string.Empty;
 
         public MachineService(LoggerService loggerService)
         {
@@ -18,19 +19,26 @@ namespace AOIEquipmentControlSystem.Services
         {
             List<string> logs = new();
 
-            ChangeState(MachineState.Initializing, logs);
-            AddInfoLog("Initializing machine...", logs);
+            AddInfoLog("Step 1/5 - Check system idle.", logs);
+
+            if (CurrentState != MachineState.Idle)
+            {
+                AddInvalidOperationLog("Initialize requires Idle state.", logs);
+                return logs;
+            }
+
+            TryChangeState(MachineState.Initializing, logs);
 
             // In real equipment software, these steps would talk to hardware.
-            // Phase 2 only simulates the flow and keeps the logic easy to read.
-            AddInfoLog("Loading recipe...", logs);
-            AddInfoLog("Connecting device...", logs);
+            // Phase 4 still simulates the flow, but logs each equipment step clearly.
+            AddInfoLog("Step 2/5 - Load recipe.", logs);
+            AddInfoLog("Step 3/5 - Connect device.", logs);
             IsDeviceConnected = true;
             AddInfoLog("Device connected.", logs);
-            AddInfoLog("Homing motion axis...", logs);
+            AddInfoLog("Step 4/5 - Home axis.", logs);
 
-            ChangeState(MachineState.Ready, logs);
-            AddInfoLog("Machine is ready.", logs);
+            TryChangeState(MachineState.Ready, logs);
+            AddInfoLog("Step 5/5 - Machine ready.", logs);
 
             return logs;
         }
@@ -39,27 +47,32 @@ namespace AOIEquipmentControlSystem.Services
         {
             List<string> logs = new();
 
+            AddInfoLog("Step 1/7 - Check machine ready.", logs);
+
             if (CurrentState != MachineState.Ready)
             {
-                ChangeState(MachineState.Alarm, logs);
-                AddErrorLog("Cannot start auto. Machine is not ready.", logs);
+                AddInvalidOperationLog("Start Auto requires Ready state.", logs);
+                SetAlarm(GetStartAutoAlarmMessage(), logs);
                 return logs;
             }
 
-            ChangeState(MachineState.Running, logs);
+            CurrentAlarmMessage = string.Empty;
+
+            TryChangeState(MachineState.Running, logs);
             AddInfoLog("Start auto inspection flow.", logs);
 
-            AddInfoLog("Moving to capture position...", logs);
-            AddInfoLog("Turning light on...", logs);
-            AddInfoLog("Capturing image...", logs);
+            AddInfoLog("Step 2/7 - Move to capture position.", logs);
+            AddInfoLog("Step 3/7 - Turn on light.", logs);
+            AddInfoLog("Step 4/7 - Capture image.", logs);
 
-            ChangeState(MachineState.Inspecting, logs);
-            AddInfoLog("Running simulated inspection...", logs);
+            TryChangeState(MachineState.Inspecting, logs);
+            AddInfoLog("Step 5/7 - Run inspection.", logs);
 
-            ChangeState(MachineState.Completed, logs);
-            AddInfoLog("Inspection flow completed.", logs);
+            TryChangeState(MachineState.Completed, logs);
+            AddInfoLog("Step 6/7 - Save result (simulated).", logs);
+            AddInfoLog("Step 7/7 - Complete cycle.", logs);
 
-            ChangeState(MachineState.Ready, logs);
+            TryChangeState(MachineState.Ready, logs);
             AddInfoLog("Machine is ready for next run.", logs);
 
             return logs;
@@ -69,11 +82,17 @@ namespace AOIEquipmentControlSystem.Services
         {
             List<string> logs = new();
 
+            if (CurrentState == MachineState.Alarm)
+            {
+                AddInfoLog("Stop ignored because machine is in Alarm. Clear alarm or reset first.", logs);
+                return logs;
+            }
+
             if (CurrentState == MachineState.Ready ||
                 CurrentState == MachineState.Running ||
                 CurrentState == MachineState.Inspecting)
             {
-                ChangeState(MachineState.Stopped, logs);
+                TryChangeState(MachineState.Stopped, logs);
                 AddInfoLog("Machine stopped.", logs);
                 return logs;
             }
@@ -87,7 +106,8 @@ namespace AOIEquipmentControlSystem.Services
             List<string> logs = new();
 
             IsDeviceConnected = false;
-            ChangeState(MachineState.Idle, logs);
+            CurrentAlarmMessage = string.Empty;
+            TryChangeState(MachineState.Idle, logs);
             AddInfoLog("Machine reset to Idle.", logs);
 
             return logs;
@@ -99,7 +119,8 @@ namespace AOIEquipmentControlSystem.Services
 
             if (CurrentState == MachineState.Alarm)
             {
-                ChangeState(MachineState.Idle, logs);
+                CurrentAlarmMessage = string.Empty;
+                TryChangeState(MachineState.Idle, logs);
                 AddInfoLog("Alarm cleared.", logs);
                 return logs;
             }
@@ -108,12 +129,79 @@ namespace AOIEquipmentControlSystem.Services
             return logs;
         }
 
-        private void ChangeState(MachineState newState, List<string> logs)
+        private bool TryChangeState(MachineState newState, List<string> logs)
         {
+            if (CurrentState == newState)
+            {
+                return true;
+            }
+
+            if (!CanTransitionTo(newState))
+            {
+                AddErrorLog($"Invalid state transition: {CurrentState} -> {newState}.", logs);
+                return false;
+            }
+
+            MachineState oldState = CurrentState;
             CurrentState = newState;
 
             // State changes are important machine events, so every change is logged.
-            AddInfoLog($"Machine state changed to {newState}.", logs);
+            AddInfoLog($"Machine state changed: {oldState} -> {newState}", logs);
+            return true;
+        }
+
+        private bool CanTransitionTo(MachineState newState)
+        {
+            if (newState == MachineState.Alarm)
+            {
+                return true;
+            }
+
+            if (newState == MachineState.Idle)
+            {
+                return true;
+            }
+
+            return CurrentState switch
+            {
+                MachineState.Idle => newState == MachineState.Initializing,
+                MachineState.Initializing => newState == MachineState.Ready,
+                MachineState.Ready => newState == MachineState.Running ||
+                                      newState == MachineState.Stopped,
+                MachineState.Running => newState == MachineState.Inspecting ||
+                                        newState == MachineState.Stopped,
+                MachineState.Inspecting => newState == MachineState.Completed ||
+                                           newState == MachineState.Stopped,
+                MachineState.Completed => newState == MachineState.Ready,
+                _ => false
+            };
+        }
+
+        private void SetAlarm(string alarmMessage, List<string> logs)
+        {
+            CurrentAlarmMessage = alarmMessage;
+            TryChangeState(MachineState.Alarm, logs);
+            AddErrorLog($"ALARM: {alarmMessage}", logs);
+        }
+
+        private string GetStartAutoAlarmMessage()
+        {
+            if (CurrentState == MachineState.Alarm)
+            {
+                return "Cannot start auto while alarm is active.";
+            }
+
+            if (CurrentState == MachineState.Stopped)
+            {
+                return "Cannot start auto from Stopped state. Please reset the machine first.";
+            }
+
+            return "Cannot start auto. Machine is not ready.";
+        }
+
+        private void AddInvalidOperationLog(string message, List<string> logs)
+        {
+            AddErrorLog($"Invalid operation: {message}", logs);
         }
 
         private void AddInfoLog(string message, List<string> logs)

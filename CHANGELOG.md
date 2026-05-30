@@ -7,7 +7,16 @@
 ## [Unreleased]
 
 ### Added
-- 后续尚未发布的新功能或调整先记录在这里。
+- 完成 Phase 3 Recipe 管理，支持从 `Config/recipe.json` 读取、显示、编辑并保存 Recipe 参数。
+- MainForm 新增 `Save Recipe` 按钮。
+- `RecipeService` 新增 Recipe JSON 保存功能，并输出格式化 JSON。
+- 完成 Phase 4 State Machine 强化，新增明确状态转换检查、Alarm message 和流程步骤 log。
+- MainForm 新增 Current Alarm Message 显示。
+
+### Changed
+- `LoggerService` 改为将 machine log 写入项目资料夹 `AOIEquipmentControlSystem/Logs`，方便直接查看运行记录。
+- 更新 README、ROADMAP、TASKS，记录 Phase 4 完成状态。
+- 更新 README、ROADMAP、TASKS，记录 Phase 3 完成状态。
 
 ## [0.2.1] - 2026-05-31
 
@@ -20,6 +29,10 @@
 ### Changed
 - 更新 `.gitignore`，忽略 Logs、Results、Images/Result 内的运行产物。
 - 更新 `.csproj`，让 `Config/recipe.json` build 时复制到输出目录。
+- MainForm 改用动态 layout panels，减少窗口缩放时文字被遮住的问题。
+- 调整 MainForm 垂直空间分配，让 Recipe Parameters 和 Machine Log 更容易阅读。
+- Machine Log 新增编号区块 header，方便辨识同一次 UI 操作产生的 log。
+- Machine Log header 改为蓝色多行显示，凸显 Update、Action、Time、State 信息。
 
 ## [0.2.0] - 2026-05-30
 

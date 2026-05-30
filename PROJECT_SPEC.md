@@ -41,6 +41,7 @@ WinForms 主画面需要包含：
 - Clear Alarm 按钮
 - Machine Status Label
 - Device Connection Status Label
+- Current Alarm Message 显示
 - Recipe Name 显示
 - 参数显示区域
 - Original Image 显示区域

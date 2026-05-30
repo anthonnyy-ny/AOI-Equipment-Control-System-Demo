@@ -6,7 +6,7 @@
 
         public LoggerService()
         {
-            _logFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs");
+            _logFolderPath = GetDefaultLogFolderPath();
 
             if (!Directory.Exists(_logFolderPath))
             {
@@ -38,6 +38,26 @@
         public string Result(string message)
         {
             return WriteLog("RESULT", message);
+        }
+
+        private static string GetDefaultLogFolderPath()
+        {
+            DirectoryInfo? currentDirectory = new(AppDomain.CurrentDomain.BaseDirectory);
+
+            while (currentDirectory != null)
+            {
+                string projectFilePath = Path.Combine(currentDirectory.FullName, "AOIEquipmentControlSystem.csproj");
+                string projectLogFolderPath = Path.Combine(currentDirectory.FullName, "Logs");
+
+                if (File.Exists(projectFilePath))
+                {
+                    return projectLogFolderPath;
+                }
+
+                currentDirectory = currentDirectory.Parent;
+            }
+
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs");
         }
     }
 }

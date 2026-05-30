@@ -34,18 +34,18 @@
 
 ## Phase 3 - Recipe 管理
 
-- [ ] 新增 RecipeService
-- [ ] 从 Config/recipe.json 读取 recipe
-- [ ] 在 UI 显示实际 recipe
-- [ ] 将 recipe 修改保存回 JSON
+- [x] 新增 RecipeService
+- [x] 从 Config/recipe.json 读取 recipe
+- [x] 在 UI 显示实际 recipe
+- [x] 将 recipe 修改保存回 JSON（Phase 3B）
 
 ## Phase 4 - State Machine 强化
 
-- [ ] 整理 MachineService 状态转换规则
-- [ ] 加入状态转换检查
-- [ ] 加入 alarm message
-- [ ] 加入流程步骤显示
-- [ ] 改善 UI 状态显示
+- [x] 整理 MachineService 状态转换规则
+- [x] 加入状态转换检查
+- [x] 加入 alarm message
+- [x] 加入流程步骤显示
+- [x] 改善 UI 状态显示
 
 ## Phase 5 - TCP Device Simulator
 
@@ -85,9 +85,3 @@
 - [ ] 加入 system flow diagram
 - [ ] 加入 state machine 说明
 - [ ] 加入 communication protocol 说明
-
-## Maintenance Update - 2026-05-30
-- [x] Improved MainForm dynamic layout to avoid text overlap.
-- [x] Rebalanced MainForm vertical layout so Recipe Parameters and Machine Log are easier to read.
-- [x] Added numbered Machine Log update headers for easier troubleshooting.
-- [x] Changed Machine Log headers to a blue multi-line operation block.
