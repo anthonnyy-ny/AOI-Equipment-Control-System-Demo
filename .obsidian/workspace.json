@@ -93,8 +93,7 @@
               "title": "ROADMAP"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -167,7 +166,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CHANGELOG.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -177,7 +176,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "CHANGELOG 的反向链接列表"
+              "title": "README 的反向链接列表"
             }
           },
           {
@@ -186,12 +185,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "CHANGELOG.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "CHANGELOG 的出链列表"
+              "title": "README 的出链列表"
             }
           },
           {
@@ -229,13 +228,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "CHANGELOG.md",
+                "file": "README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "CHANGELOG 的大纲"
+              "title": "README 的大纲"
             }
           }
         ]
@@ -256,15 +255,15 @@
       "bases:新建数据库": false
     }
   },
-  "active": "7b6f6832639a211e",
+  "active": "cd09cb1140e6f30d",
   "lastOpenFiles": [
+    "CHANGELOG.md",
     "TASKS.md",
     "AGENTS.md",
     "README.md",
     "ROADMAP.md",
     "CHANGE_REQUESTS.md",
     "AOIEquipmentControlSystem/obj/Debug/net8.0-windows/ir0uogrv.1a3~",
-    "CHANGELOG.md",
     "DOC_SYNC_CHECKLIST.md",
     "AOIEquipmentControlSystem/obj/Debug/net8.0-windows/jvrjjn00.t00~",
     "AOIEquipmentControlSystem/Logs/2026-05-31_machine_log.txt",
