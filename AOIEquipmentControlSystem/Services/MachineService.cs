@@ -31,10 +31,10 @@ namespace AOIEquipmentControlSystem.Services
 
             // In real equipment software, these steps would talk to hardware.
             // Phase 4 still simulates the flow, but logs each equipment step clearly.
-            AddInfoLog("Step 2/5 - Load recipe.", logs);
-            AddInfoLog("Step 3/5 - Connect device.", logs);
+            AddInfoLog("Step 2/5 - Connect device.", logs);
             IsDeviceConnected = true;
             AddInfoLog("Device connected.", logs);
+            AddInfoLog("Step 3/5 - Load recipe.", logs);
             AddInfoLog("Step 4/5 - Home axis.", logs);
 
             TryChangeState(MachineState.Ready, logs);

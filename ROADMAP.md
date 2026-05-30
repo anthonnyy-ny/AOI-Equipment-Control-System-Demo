@@ -133,6 +133,8 @@
   - `MOVE`
   - `LIGHT ON`
   - `CAPTURE`
+  - `INSPECT`
+  - `LIGHT OFF`
   - `RESET`
 - 支持基础 response：
   - `OK`

@@ -94,7 +94,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -167,7 +167,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CHANGE_REQUESTS.md",
+                "file": "CHANGELOG.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -177,7 +177,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "CHANGE_REQUESTS 的反向链接列表"
+              "title": "CHANGELOG 的反向链接列表"
             }
           },
           {
@@ -186,12 +186,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "CHANGE_REQUESTS.md",
+                "file": "CHANGELOG.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "CHANGE_REQUESTS 的出链列表"
+              "title": "CHANGELOG 的出链列表"
             }
           },
           {
@@ -229,13 +229,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "CHANGE_REQUESTS.md",
+                "file": "CHANGELOG.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "CHANGE_REQUESTS 的大纲"
+              "title": "CHANGELOG 的大纲"
             }
           }
         ]
@@ -256,17 +256,18 @@
       "bases:新建数据库": false
     }
   },
-  "active": "d9d84715f62cd394",
+  "active": "7b6f6832639a211e",
   "lastOpenFiles": [
+    "TASKS.md",
+    "AGENTS.md",
+    "README.md",
+    "ROADMAP.md",
+    "CHANGE_REQUESTS.md",
+    "AOIEquipmentControlSystem/obj/Debug/net8.0-windows/ir0uogrv.1a3~",
     "CHANGELOG.md",
     "DOC_SYNC_CHECKLIST.md",
     "AOIEquipmentControlSystem/obj/Debug/net8.0-windows/jvrjjn00.t00~",
     "AOIEquipmentControlSystem/Logs/2026-05-31_machine_log.txt",
-    "TASKS.md",
-    "README.md",
-    "AGENTS.md",
-    "CHANGE_REQUESTS.md",
-    "ROADMAP.md",
     "PROJECT_SPEC.md"
   ]
 }

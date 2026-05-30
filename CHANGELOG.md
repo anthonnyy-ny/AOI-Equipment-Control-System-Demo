@@ -11,6 +11,8 @@
 - 新增 `DOC_SYNC_CHECKLIST.md`，作为功能完成、Phase 推进和版本发布前的文档同步检查表。
 
 ### Changed
+- 对齐 Initialize 模拟流程顺序，让 MachineService log 符合项目自动流程：Connect Device -> Load Recipe -> Home。
+- 对齐 Phase 5 TCP command 规划，补充 `INSPECT` 与 `LIGHT OFF`。
 - 更新 `AGENTS.md`，加入文档同步规则，要求关键节点参考 `DOC_SYNC_CHECKLIST.md`。
 - 更新 `README.md`，补充 `DOC_SYNC_CHECKLIST.md` 文件说明。
 
