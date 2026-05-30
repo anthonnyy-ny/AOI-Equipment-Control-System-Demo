@@ -142,6 +142,7 @@
             // 
             // recipeGroupBox
             // 
+            recipeGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Left;
             recipeGroupBox.Controls.Add(recipeTextBox);
             recipeGroupBox.Location = new Point(20, 120);
             recipeGroupBox.Name = "recipeGroupBox";
@@ -162,30 +163,33 @@
             // 
             // logGroupBox
             // 
+            logGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             logGroupBox.Controls.Add(logTextBox);
             logGroupBox.Location = new Point(340, 120);
             logGroupBox.Name = "logGroupBox";
-            logGroupBox.Size = new Size(420, 170);
+            logGroupBox.Size = new Size(424, 170);
             logGroupBox.TabIndex = 10;
             logGroupBox.TabStop = false;
             logGroupBox.Text = "Machine Log";
             // 
             // logTextBox
             // 
+            logTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             logTextBox.Location = new Point(12, 26);
             logTextBox.Multiline = true;
             logTextBox.Name = "logTextBox";
             logTextBox.ReadOnly = true;
             logTextBox.ScrollBars = ScrollBars.Vertical;
-            logTextBox.Size = new Size(390, 128);
+            logTextBox.Size = new Size(394, 128);
             logTextBox.TabIndex = 0;
             // 
             // resultGroupBox
             // 
+            resultGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             resultGroupBox.Controls.Add(resultDataGridView);
             resultGroupBox.Location = new Point(20, 310);
             resultGroupBox.Name = "resultGroupBox";
-            resultGroupBox.Size = new Size(740, 190);
+            resultGroupBox.Size = new Size(744, 190);
             resultGroupBox.TabIndex = 11;
             resultGroupBox.TabStop = false;
             resultGroupBox.Text = "Inspection Result";
@@ -194,16 +198,17 @@
             // 
             resultDataGridView.AllowUserToAddRows = false;
             resultDataGridView.AllowUserToDeleteRows = false;
+            resultDataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             resultDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             resultDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             resultDataGridView.Location = new Point(12, 26);
             resultDataGridView.Name = "resultDataGridView";
             resultDataGridView.ReadOnly = true;
-            resultDataGridView.Size = new Size(710, 145);
+            resultDataGridView.Size = new Size(714, 145);
             resultDataGridView.TabIndex = 0;
             // 
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(784, 521);
+            ClientSize = new Size(800, 540);
             Controls.Add(resultGroupBox);
             Controls.Add(logGroupBox);
             Controls.Add(recipeGroupBox);
@@ -216,8 +221,7 @@
             Controls.Add(stopButton);
             Controls.Add(startAutoButton);
             Controls.Add(initializeButton);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
+            MinimumSize = new Size(820, 580);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AOI Equipment Control System Demo";
