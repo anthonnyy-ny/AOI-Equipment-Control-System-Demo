@@ -3,3 +3,13 @@ bin/
 obj/
 *.user
 *.suo
+
+# Runtime output
+AOIEquipmentControlSystem/Logs/*
+!AOIEquipmentControlSystem/Logs/.gitkeep
+AOIEquipmentControlSystem/Results/*
+!AOIEquipmentControlSystem/Results/.gitkeep
+AOIEquipmentControlSystem/Images/Result/*
+!AOIEquipmentControlSystem/Images/Result/.gitkeep
+
+# Keep sample images intentional. Generated images should go under Images/Result.

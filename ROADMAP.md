@@ -195,3 +195,6 @@
 - 真实相机 SDK
 - 真实 PLC / motion controller
 - 真实公司资料或真实机台参数
+
+## Maintenance Update - 2026-05-30
+- Phase 2 HMI layout was adjusted to use dynamic WinForms panels so text is not covered during resize.

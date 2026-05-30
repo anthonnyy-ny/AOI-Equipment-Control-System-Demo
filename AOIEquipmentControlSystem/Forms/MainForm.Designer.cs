@@ -1,4 +1,4 @@
-﻿namespace AOIEquipmentControlSystem
+namespace AOIEquipmentControlSystem
 {
     partial class MainForm
     {
@@ -28,31 +28,74 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            mainLayoutPanel = new TableLayoutPanel();
+            commandFlowLayoutPanel = new FlowLayoutPanel();
             initializeButton = new Button();
             startAutoButton = new Button();
             stopButton = new Button();
             resetButton = new Button();
             clearAlarmButton = new Button();
+            statusTableLayoutPanel = new TableLayoutPanel();
             machineStatusTitleLabel = new Label();
             machineStatusValueLabel = new Label();
             deviceStatusTitleLabel = new Label();
             deviceStatusValueLabel = new Label();
+            detailTableLayoutPanel = new TableLayoutPanel();
             recipeGroupBox = new GroupBox();
             recipeTextBox = new TextBox();
             logGroupBox = new GroupBox();
             logTextBox = new TextBox();
             resultGroupBox = new GroupBox();
             resultDataGridView = new DataGridView();
+            mainLayoutPanel.SuspendLayout();
+            commandFlowLayoutPanel.SuspendLayout();
+            statusTableLayoutPanel.SuspendLayout();
+            detailTableLayoutPanel.SuspendLayout();
             recipeGroupBox.SuspendLayout();
             logGroupBox.SuspendLayout();
             resultGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)resultDataGridView).BeginInit();
             SuspendLayout();
             // 
+            // mainLayoutPanel
+            // 
+            mainLayoutPanel.ColumnCount = 1;
+            mainLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            mainLayoutPanel.Controls.Add(commandFlowLayoutPanel, 0, 0);
+            mainLayoutPanel.Controls.Add(statusTableLayoutPanel, 0, 1);
+            mainLayoutPanel.Controls.Add(detailTableLayoutPanel, 0, 2);
+            mainLayoutPanel.Controls.Add(resultGroupBox, 0, 3);
+            mainLayoutPanel.Dock = DockStyle.Fill;
+            mainLayoutPanel.Location = new Point(0, 0);
+            mainLayoutPanel.Name = "mainLayoutPanel";
+            mainLayoutPanel.Padding = new Padding(16);
+            mainLayoutPanel.RowCount = 4;
+            mainLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            mainLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
+            mainLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 180F));
+            mainLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            mainLayoutPanel.Size = new Size(1844, 964);
+            mainLayoutPanel.TabIndex = 0;
+            // 
+            // commandFlowLayoutPanel
+            // 
+            commandFlowLayoutPanel.Controls.Add(initializeButton);
+            commandFlowLayoutPanel.Controls.Add(startAutoButton);
+            commandFlowLayoutPanel.Controls.Add(stopButton);
+            commandFlowLayoutPanel.Controls.Add(resetButton);
+            commandFlowLayoutPanel.Controls.Add(clearAlarmButton);
+            commandFlowLayoutPanel.Dock = DockStyle.Fill;
+            commandFlowLayoutPanel.Location = new Point(16, 16);
+            commandFlowLayoutPanel.Margin = new Padding(0, 0, 0, 8);
+            commandFlowLayoutPanel.Name = "commandFlowLayoutPanel";
+            commandFlowLayoutPanel.Size = new Size(1812, 42);
+            commandFlowLayoutPanel.TabIndex = 0;
+            commandFlowLayoutPanel.WrapContents = false;
+            // 
             // initializeButton
             // 
-            initializeButton.Location = new Point(20, 20);
+            initializeButton.Location = new Point(0, 0);
+            initializeButton.Margin = new Padding(0, 0, 8, 0);
             initializeButton.Name = "initializeButton";
             initializeButton.Size = new Size(120, 36);
             initializeButton.TabIndex = 0;
@@ -62,7 +105,8 @@
             // 
             // startAutoButton
             // 
-            startAutoButton.Location = new Point(150, 20);
+            startAutoButton.Location = new Point(128, 0);
+            startAutoButton.Margin = new Padding(0, 0, 8, 0);
             startAutoButton.Name = "startAutoButton";
             startAutoButton.Size = new Size(120, 36);
             startAutoButton.TabIndex = 1;
@@ -72,7 +116,8 @@
             // 
             // stopButton
             // 
-            stopButton.Location = new Point(280, 20);
+            stopButton.Location = new Point(256, 0);
+            stopButton.Margin = new Padding(0, 0, 8, 0);
             stopButton.Name = "stopButton";
             stopButton.Size = new Size(120, 36);
             stopButton.TabIndex = 2;
@@ -82,7 +127,8 @@
             // 
             // resetButton
             // 
-            resetButton.Location = new Point(410, 20);
+            resetButton.Location = new Point(384, 0);
+            resetButton.Margin = new Padding(0, 0, 8, 0);
             resetButton.Name = "resetButton";
             resetButton.Size = new Size(120, 36);
             resetButton.TabIndex = 3;
@@ -92,7 +138,8 @@
             // 
             // clearAlarmButton
             // 
-            clearAlarmButton.Location = new Point(540, 20);
+            clearAlarmButton.Location = new Point(512, 0);
+            clearAlarmButton.Margin = new Padding(0);
             clearAlarmButton.Name = "clearAlarmButton";
             clearAlarmButton.Size = new Size(120, 36);
             clearAlarmButton.TabIndex = 4;
@@ -100,96 +147,149 @@
             clearAlarmButton.UseVisualStyleBackColor = true;
             clearAlarmButton.Click += ClearAlarmButton_Click;
             // 
+            // statusTableLayoutPanel
+            // 
+            statusTableLayoutPanel.ColumnCount = 4;
+            statusTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
+            statusTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            statusTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
+            statusTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            statusTableLayoutPanel.Controls.Add(machineStatusTitleLabel, 0, 0);
+            statusTableLayoutPanel.Controls.Add(machineStatusValueLabel, 1, 0);
+            statusTableLayoutPanel.Controls.Add(deviceStatusTitleLabel, 2, 0);
+            statusTableLayoutPanel.Controls.Add(deviceStatusValueLabel, 3, 0);
+            statusTableLayoutPanel.Dock = DockStyle.Fill;
+            statusTableLayoutPanel.Location = new Point(16, 66);
+            statusTableLayoutPanel.Margin = new Padding(0, 0, 0, 8);
+            statusTableLayoutPanel.Name = "statusTableLayoutPanel";
+            statusTableLayoutPanel.RowCount = 1;
+            statusTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            statusTableLayoutPanel.Size = new Size(1812, 34);
+            statusTableLayoutPanel.TabIndex = 1;
+            // 
             // machineStatusTitleLabel
             // 
+            machineStatusTitleLabel.Anchor = AnchorStyles.Left;
             machineStatusTitleLabel.AutoSize = true;
             machineStatusTitleLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            machineStatusTitleLabel.Location = new Point(20, 78);
+            machineStatusTitleLabel.Location = new Point(0, 0);
+            machineStatusTitleLabel.Margin = new Padding(0, 0, 8, 0);
             machineStatusTitleLabel.Name = "machineStatusTitleLabel";
-            machineStatusTitleLabel.Size = new Size(117, 19);
+            machineStatusTitleLabel.Size = new Size(219, 34);
             machineStatusTitleLabel.TabIndex = 5;
             machineStatusTitleLabel.Text = "Machine Status:";
             // 
             // machineStatusValueLabel
             // 
+            machineStatusValueLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             machineStatusValueLabel.BorderStyle = BorderStyle.FixedSingle;
-            machineStatusValueLabel.Location = new Point(150, 74);
+            machineStatusValueLabel.Location = new Point(227, 3);
+            machineStatusValueLabel.Margin = new Padding(0, 0, 24, 0);
             machineStatusValueLabel.Name = "machineStatusValueLabel";
-            machineStatusValueLabel.Size = new Size(160, 28);
+            machineStatusValueLabel.Size = new Size(633, 28);
             machineStatusValueLabel.TabIndex = 6;
             machineStatusValueLabel.Text = "Idle";
             machineStatusValueLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // deviceStatusTitleLabel
             // 
+            deviceStatusTitleLabel.Anchor = AnchorStyles.Left;
             deviceStatusTitleLabel.AutoSize = true;
             deviceStatusTitleLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            deviceStatusTitleLabel.Location = new Point(340, 78);
+            deviceStatusTitleLabel.Location = new Point(884, 0);
+            deviceStatusTitleLabel.Margin = new Padding(0, 0, 8, 0);
             deviceStatusTitleLabel.Name = "deviceStatusTitleLabel";
-            deviceStatusTitleLabel.Size = new Size(137, 19);
+            deviceStatusTitleLabel.Size = new Size(263, 34);
             deviceStatusTitleLabel.TabIndex = 7;
             deviceStatusTitleLabel.Text = "Device Connection:";
             // 
             // deviceStatusValueLabel
             // 
+            deviceStatusValueLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             deviceStatusValueLabel.BorderStyle = BorderStyle.FixedSingle;
-            deviceStatusValueLabel.Location = new Point(490, 74);
+            deviceStatusValueLabel.Location = new Point(1155, 3);
+            deviceStatusValueLabel.Margin = new Padding(0);
             deviceStatusValueLabel.Name = "deviceStatusValueLabel";
-            deviceStatusValueLabel.Size = new Size(170, 28);
+            deviceStatusValueLabel.Size = new Size(657, 28);
             deviceStatusValueLabel.TabIndex = 8;
             deviceStatusValueLabel.Text = "Disconnected";
             deviceStatusValueLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // detailTableLayoutPanel
+            // 
+            detailTableLayoutPanel.ColumnCount = 2;
+            detailTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
+            detailTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
+            detailTableLayoutPanel.Controls.Add(recipeGroupBox, 0, 0);
+            detailTableLayoutPanel.Controls.Add(logGroupBox, 1, 0);
+            detailTableLayoutPanel.Dock = DockStyle.Fill;
+            detailTableLayoutPanel.Location = new Point(16, 108);
+            detailTableLayoutPanel.Margin = new Padding(0, 0, 0, 12);
+            detailTableLayoutPanel.Name = "detailTableLayoutPanel";
+            detailTableLayoutPanel.RowCount = 1;
+            detailTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            detailTableLayoutPanel.Size = new Size(1812, 168);
+            detailTableLayoutPanel.TabIndex = 2;
+            // 
             // recipeGroupBox
             // 
-            recipeGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Left;
             recipeGroupBox.Controls.Add(recipeTextBox);
-            recipeGroupBox.Location = new Point(20, 120);
+            recipeGroupBox.Dock = DockStyle.Fill;
+            recipeGroupBox.Location = new Point(0, 0);
+            recipeGroupBox.Margin = new Padding(0, 0, 8, 0);
             recipeGroupBox.Name = "recipeGroupBox";
-            recipeGroupBox.Size = new Size(300, 170);
+            recipeGroupBox.Padding = new Padding(12);
+            recipeGroupBox.Size = new Size(716, 168);
             recipeGroupBox.TabIndex = 9;
             recipeGroupBox.TabStop = false;
             recipeGroupBox.Text = "Recipe Parameters";
             // 
             // recipeTextBox
             // 
-            recipeTextBox.Location = new Point(12, 26);
+            recipeTextBox.Dock = DockStyle.Fill;
+            recipeTextBox.Location = new Point(12, 43);
+            recipeTextBox.Margin = new Padding(0);
             recipeTextBox.Multiline = true;
             recipeTextBox.Name = "recipeTextBox";
             recipeTextBox.ReadOnly = true;
             recipeTextBox.ScrollBars = ScrollBars.Vertical;
-            recipeTextBox.Size = new Size(270, 128);
+            recipeTextBox.Size = new Size(692, 113);
             recipeTextBox.TabIndex = 0;
             // 
             // logGroupBox
             // 
-            logGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             logGroupBox.Controls.Add(logTextBox);
-            logGroupBox.Location = new Point(340, 120);
+            logGroupBox.Dock = DockStyle.Fill;
+            logGroupBox.Location = new Point(732, 0);
+            logGroupBox.Margin = new Padding(8, 0, 0, 0);
             logGroupBox.Name = "logGroupBox";
-            logGroupBox.Size = new Size(424, 170);
+            logGroupBox.Padding = new Padding(12);
+            logGroupBox.Size = new Size(1080, 168);
             logGroupBox.TabIndex = 10;
             logGroupBox.TabStop = false;
             logGroupBox.Text = "Machine Log";
             // 
             // logTextBox
             // 
-            logTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            logTextBox.Location = new Point(12, 26);
+            logTextBox.Dock = DockStyle.Fill;
+            logTextBox.Location = new Point(12, 43);
+            logTextBox.Margin = new Padding(0);
             logTextBox.Multiline = true;
             logTextBox.Name = "logTextBox";
             logTextBox.ReadOnly = true;
             logTextBox.ScrollBars = ScrollBars.Vertical;
-            logTextBox.Size = new Size(394, 128);
+            logTextBox.Size = new Size(1056, 113);
             logTextBox.TabIndex = 0;
             // 
             // resultGroupBox
             // 
-            resultGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             resultGroupBox.Controls.Add(resultDataGridView);
-            resultGroupBox.Location = new Point(20, 310);
+            resultGroupBox.Dock = DockStyle.Fill;
+            resultGroupBox.Location = new Point(16, 288);
+            resultGroupBox.Margin = new Padding(0);
             resultGroupBox.Name = "resultGroupBox";
-            resultGroupBox.Size = new Size(744, 190);
+            resultGroupBox.Padding = new Padding(12);
+            resultGroupBox.Size = new Size(1812, 660);
             resultGroupBox.TabIndex = 11;
             resultGroupBox.TabStop = false;
             resultGroupBox.Text = "Inspection Result";
@@ -198,33 +298,32 @@
             // 
             resultDataGridView.AllowUserToAddRows = false;
             resultDataGridView.AllowUserToDeleteRows = false;
-            resultDataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             resultDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             resultDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            resultDataGridView.Location = new Point(12, 26);
+            resultDataGridView.Dock = DockStyle.Fill;
+            resultDataGridView.Location = new Point(12, 43);
+            resultDataGridView.Margin = new Padding(0);
             resultDataGridView.Name = "resultDataGridView";
             resultDataGridView.ReadOnly = true;
-            resultDataGridView.Size = new Size(714, 145);
+            resultDataGridView.RowHeadersWidth = 82;
+            resultDataGridView.Size = new Size(1788, 605);
             resultDataGridView.TabIndex = 0;
             // 
+            // MainForm
+            // 
+            AutoScaleDimensions = new SizeF(14F, 31F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 540);
-            Controls.Add(resultGroupBox);
-            Controls.Add(logGroupBox);
-            Controls.Add(recipeGroupBox);
-            Controls.Add(deviceStatusValueLabel);
-            Controls.Add(deviceStatusTitleLabel);
-            Controls.Add(machineStatusValueLabel);
-            Controls.Add(machineStatusTitleLabel);
-            Controls.Add(clearAlarmButton);
-            Controls.Add(resetButton);
-            Controls.Add(stopButton);
-            Controls.Add(startAutoButton);
-            Controls.Add(initializeButton);
-            MinimumSize = new Size(820, 580);
+            ClientSize = new Size(1844, 964);
+            Controls.Add(mainLayoutPanel);
+            MinimumSize = new Size(760, 560);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AOI Equipment Control System Demo";
+            mainLayoutPanel.ResumeLayout(false);
+            commandFlowLayoutPanel.ResumeLayout(false);
+            statusTableLayoutPanel.ResumeLayout(false);
+            statusTableLayoutPanel.PerformLayout();
+            detailTableLayoutPanel.ResumeLayout(false);
             recipeGroupBox.ResumeLayout(false);
             recipeGroupBox.PerformLayout();
             logGroupBox.ResumeLayout(false);
@@ -232,11 +331,14 @@
             resultGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)resultDataGridView).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
+        private TableLayoutPanel mainLayoutPanel;
+        private FlowLayoutPanel commandFlowLayoutPanel;
+        private TableLayoutPanel statusTableLayoutPanel;
+        private TableLayoutPanel detailTableLayoutPanel;
         private Button initializeButton;
         private Button startAutoButton;
         private Button stopButton;

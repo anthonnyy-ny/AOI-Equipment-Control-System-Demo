@@ -103,3 +103,7 @@ dotnet build .\AOIEquipmentControlSystem\AOIEquipmentControlSystem.csproj
 预期结果：项目可以成功 build，且没有错误。
 
 也可以使用 Visual Studio 打开项目后按下 Start 执行 WinForms 程序，并依照上方正常流程与异常流程测试按钮操作。
+
+## Maintenance Update - 2026-05-30
+- MainForm now uses dynamic layout panels for command buttons, status fields, Recipe, Log, and Result areas.
+- Verify with: dotnet build .\AOIEquipmentControlSystem\AOIEquipmentControlSystem.csproj, then resize the WinForms window and confirm controls do not cover text.

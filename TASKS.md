@@ -85,3 +85,6 @@
 - [ ] 加入 system flow diagram
 - [ ] 加入 state machine 说明
 - [ ] 加入 communication protocol 说明
+
+## Maintenance Update - 2026-05-30
+- [x] Improved MainForm dynamic layout to avoid text overlap.
