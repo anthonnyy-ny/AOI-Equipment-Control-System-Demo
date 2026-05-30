@@ -42,6 +42,7 @@
 
 ## 建议资料夹结构
 
+```text
 AOIEquipmentControlSystem/
 ├── Forms/
 ├── Models/
@@ -50,6 +51,7 @@ AOIEquipmentControlSystem/
 ├── Logs/
 ├── Images/
 └── Results/
+```
 
 ## 主要功能
 
@@ -79,6 +81,7 @@ AOIEquipmentControlSystem/
 
 自动流程应该是：
 
+```text
 Initialize
 → Connect Device
 → Load Recipe
@@ -89,6 +92,7 @@ Initialize
 → Run AOI Inspection
 → Save Result
 → Complete
+```
 
 ## 开发风格
 
@@ -104,6 +108,27 @@ Initialize
    - `TASKS.md` 勾选完成项目。
    - `ROADMAP.md` 更新当前 Phase 状态。
    - 必要时更新 `README.md` 的目前开发状态和验证说明。
+
+## 版本记录规则
+
+- 项目使用 `CHANGELOG.md` 记录版本修改说明。
+- 不需要每一次小修改都实时更新 `CHANGELOG.md`。
+- 完成一个 Phase、准备 commit、准备 tag 或准备发布版本时，必须更新 `CHANGELOG.md`。
+- 尚未发布的修改先记录在 `[Unreleased]`。
+- 正式发布时，把 `[Unreleased]` 内容整理到新的版本号区块，例如 `[0.3.0] - 2026-06-01`。
+- 版本号建议使用 SemVer：
+  - `0.x.0` 表示完成一个主要 Phase。
+  - `0.x.y` 表示小修正、环境整理或文件整理。
+  - `1.0.0` 表示作品集版本完成，可以正式展示。
+
+## 需求变更规则
+
+- 临时新想法、老板新增需求、功能变更先记录到 `CHANGE_REQUESTS.md`。
+- 不要因为临时想法马上打断当前 Phase。
+- 每个变更需求需要记录：状态、优先级、来源、提出日期、目标阶段、需求原因和影响范围。
+- 只有确认接受的需求，才同步更新 `ROADMAP.md` 和 `TASKS.md`。
+- 如果需求会改变系统规格或使用方式，必要时同步更新 `PROJECT_SPEC.md` 和 `README.md`。
+- 完成并发布相关需求时，再更新 `CHANGELOG.md`。
 
 ## 不要做的事情
 
