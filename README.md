@@ -4,6 +4,12 @@
 
 项目目标是模拟工业自动化设备软件的基础结构，作为光学检测 / 自动化设备软件工程师作品集使用。后续会逐步加入 Recipe 参数管理、TCP/IP 设备通讯模拟器、OpenCvSharp AOI 影像检测、CSV 检测结果输出等功能。
 
+## 项目文件
+
+- [ROADMAP.md](ROADMAP.md)：项目开发路线图，适合审核整体进度。
+- [TASKS.md](TASKS.md)：开发任务 checklist，适合逐项确认完成状态。
+- [PROJECT_SPEC.md](PROJECT_SPEC.md)：项目规格说明。
+
 ## 目前开发状态
 
 目前完成 Phase 2：基础 HMI 与简单 MachineService 骨架。

@@ -1,44 +1,51 @@
 # Development Tasks
 
+这个文件作为开发 checklist 使用。整体路线图请参考 [ROADMAP.md](ROADMAP.md)。
+
 ## Phase 1 - 项目初始化
 
-- [ ] 建立 C# WinForms project
-- [ ] 建立资料夹结构：Forms, Models, Services, Config, Logs, Images, Results
-- [ ] 新增 MachineState enum
-- [ ] 新增 Recipe model
-- [ ] 新增 InspectionResult model
-- [ ] 新增 LoggerService
-- [ ] 新增 README 项目简介
+- [x] 建立 C# WinForms project
+- [x] 建立资料夹结构：Forms, Models, Services, Config, Logs, Images, Results
+- [x] 新增 MachineState enum
+- [x] 新增 Recipe model
+- [x] 新增 InspectionResult model
+- [x] 新增 LoggerService
+- [x] 新增 sample Config/recipe.json
+- [x] 新增 README 项目简介
 
-## Phase 2 - 基础 HMI
+## Phase 2 - 基础 HMI 与 MachineService
 
-- [ ] 新增 Initialize button
-- [ ] 新增 Start Auto button
-- [ ] 新增 Stop button
-- [ ] 新增 Reset button
-- [ ] 新增 Clear Alarm button
-- [ ] 新增 machine status label
-- [ ] 新增 log display area
-- [ ] 新增 result table
-- [ ] 新增 parameter display area
+- [x] 新增 Initialize button
+- [x] 新增 Start Auto button
+- [x] 新增 Stop button
+- [x] 新增 Reset button
+- [x] 新增 Clear Alarm button
+- [x] 新增 Machine Status label
+- [x] 新增 Device Connection Status label
+- [x] 新增 Log display area
+- [x] 新增 Result DataGridView
+- [x] 新增 Recipe parameter display area
+- [x] 新增 MachineService
+- [x] 实作 Initialize()
+- [x] 实作 StartAuto()
+- [x] 实作 Stop()
+- [x] 实作 Reset()
+- [x] 实作 ClearAlarm()
 
 ## Phase 3 - Recipe 管理
 
-- [ ] 新增 recipe.json
 - [ ] 新增 RecipeService
-- [ ] 从 JSON 读取 recipe
-- [ ] 在 UI 显示 recipe
-- [ ] 将 recipe 修改储存回 JSON
+- [ ] 从 Config/recipe.json 读取 recipe
+- [ ] 在 UI 显示实际 recipe
+- [ ] 将 recipe 修改保存回 JSON
 
-## Phase 4 - State Machine
+## Phase 4 - State Machine 强化
 
-- [ ] 新增 MachineService
-- [ ] 实作状态转换逻辑
-- [ ] 实作 Initialize flow
-- [ ] 实作 Start Auto flow
-- [ ] 实作 Stop flow
-- [ ] 实作 Reset flow
-- [ ] 加入 alarm transition
+- [ ] 整理 MachineService 状态转换规则
+- [ ] 加入状态转换检查
+- [ ] 加入 alarm message
+- [ ] 加入流程步骤显示
+- [ ] 改善 UI 状态显示
 
 ## Phase 5 - TCP Device Simulator
 
@@ -78,4 +85,3 @@
 - [ ] 加入 system flow diagram
 - [ ] 加入 state machine 说明
 - [ ] 加入 communication protocol 说明
-
