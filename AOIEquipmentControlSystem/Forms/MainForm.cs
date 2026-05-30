@@ -5,6 +5,7 @@ namespace AOIEquipmentControlSystem
     public partial class MainForm : Form
     {
         private readonly MachineService _machineService;
+        private int _logUpdateNumber;
 
         public MainForm()
         {
@@ -15,17 +16,18 @@ namespace AOIEquipmentControlSystem
             ShowRecipeParameters();
             SetupResultTable();
             UpdateMachineStatus();
+            AddLogUpdateHeader("System Startup");
             AddLogMessage("Application started.");
         }
 
         private void InitializeButton_Click(object sender, EventArgs e)
         {
-            RunMachineAction(_machineService.Initialize());
+            RunMachineAction("Initialize", _machineService.Initialize());
         }
 
         private void StartAutoButton_Click(object sender, EventArgs e)
         {
-            RunMachineAction(_machineService.StartAuto());
+            RunMachineAction("Start Auto", _machineService.StartAuto());
 
             if (_machineService.CurrentState == Models.MachineState.Ready)
             {
@@ -35,21 +37,23 @@ namespace AOIEquipmentControlSystem
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            RunMachineAction(_machineService.Stop());
+            RunMachineAction("Stop", _machineService.Stop());
         }
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            RunMachineAction(_machineService.Reset());
+            RunMachineAction("Reset", _machineService.Reset());
         }
 
         private void ClearAlarmButton_Click(object sender, EventArgs e)
         {
-            RunMachineAction(_machineService.ClearAlarm());
+            RunMachineAction("Clear Alarm", _machineService.ClearAlarm());
         }
 
-        private void RunMachineAction(List<string> logs)
+        private void RunMachineAction(string actionName, List<string> logs)
         {
+            AddLogUpdateHeader(actionName);
+
             foreach (string log in logs)
             {
                 AddLogMessage(log);
@@ -95,7 +99,38 @@ namespace AOIEquipmentControlSystem
 
         private void AddLogMessage(string message)
         {
+            AddLogLine(message, Color.Black, FontStyle.Regular);
+        }
+
+        private void AddLogUpdateHeader(string actionName)
+        {
+            _logUpdateNumber++;
+
+            if (logTextBox.TextLength > 0)
+            {
+                AddLogMessage(string.Empty);
+            }
+
+            // In equipment software, grouping logs by operation makes troubleshooting easier.
+            string separator = new string('=', 60);
+            AddLogLine(separator, Color.RoyalBlue, FontStyle.Bold);
+            AddLogLine($"UPDATE #{_logUpdateNumber:000}", Color.RoyalBlue, FontStyle.Bold);
+            AddLogLine($"Action : {actionName}", Color.RoyalBlue, FontStyle.Bold);
+            AddLogLine($"Time   : {DateTime.Now:HH:mm:ss}", Color.RoyalBlue, FontStyle.Bold);
+            AddLogLine($"State  : {_machineService.CurrentState}", Color.RoyalBlue, FontStyle.Bold);
+            AddLogLine(separator, Color.RoyalBlue, FontStyle.Bold);
+        }
+
+        private void AddLogLine(string message, Color textColor, FontStyle fontStyle)
+        {
+            logTextBox.SelectionStart = logTextBox.TextLength;
+            logTextBox.SelectionLength = 0;
+            logTextBox.SelectionColor = textColor;
+            logTextBox.SelectionFont = new Font(logTextBox.Font, fontStyle);
             logTextBox.AppendText(message + Environment.NewLine);
+            logTextBox.SelectionColor = Color.Black;
+            logTextBox.SelectionFont = logTextBox.Font;
+            logTextBox.ScrollToCaret();
         }
     }
 }

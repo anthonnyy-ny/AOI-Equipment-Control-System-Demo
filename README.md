@@ -107,3 +107,6 @@ dotnet build .\AOIEquipmentControlSystem\AOIEquipmentControlSystem.csproj
 ## Maintenance Update - 2026-05-30
 - MainForm now uses dynamic layout panels for command buttons, status fields, Recipe, Log, and Result areas.
 - Verify with: dotnet build .\AOIEquipmentControlSystem\AOIEquipmentControlSystem.csproj, then resize the WinForms window and confirm controls do not cover text.
+- Recipe Parameters and Machine Log now receive more vertical space, while Inspection Result uses a shorter balanced area.
+- Machine Log now adds numbered update headers, such as `Update #002 | Start Auto`, to show which messages belong to the same operation.
+- Machine Log headers now use a blue multi-line block with Update, Action, Time, and State fields.

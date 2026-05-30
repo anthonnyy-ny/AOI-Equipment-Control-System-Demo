@@ -198,3 +198,6 @@
 
 ## Maintenance Update - 2026-05-30
 - Phase 2 HMI layout was adjusted to use dynamic WinForms panels so text is not covered during resize.
+- Phase 2 HMI layout was rebalanced to make Recipe Parameters and Machine Log more readable.
+- Phase 2 Machine Log now groups each UI operation with a numbered update header.
+- Phase 2 Machine Log headers were made more visible with blue multi-line operation blocks.

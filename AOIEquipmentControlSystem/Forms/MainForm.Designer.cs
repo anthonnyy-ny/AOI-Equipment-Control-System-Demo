@@ -44,7 +44,7 @@ namespace AOIEquipmentControlSystem
             recipeGroupBox = new GroupBox();
             recipeTextBox = new TextBox();
             logGroupBox = new GroupBox();
-            logTextBox = new TextBox();
+            logTextBox = new RichTextBox();
             resultGroupBox = new GroupBox();
             resultDataGridView = new DataGridView();
             mainLayoutPanel.SuspendLayout();
@@ -72,8 +72,8 @@ namespace AOIEquipmentControlSystem
             mainLayoutPanel.RowCount = 4;
             mainLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             mainLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
-            mainLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 180F));
-            mainLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            mainLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
+            mainLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 55F));
             mainLayoutPanel.Size = new Size(1844, 964);
             mainLayoutPanel.TabIndex = 0;
             // 
@@ -228,7 +228,7 @@ namespace AOIEquipmentControlSystem
             detailTableLayoutPanel.Name = "detailTableLayoutPanel";
             detailTableLayoutPanel.RowCount = 1;
             detailTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            detailTableLayoutPanel.Size = new Size(1812, 168);
+            detailTableLayoutPanel.Size = new Size(1812, 375);
             detailTableLayoutPanel.TabIndex = 2;
             // 
             // recipeGroupBox
@@ -239,7 +239,7 @@ namespace AOIEquipmentControlSystem
             recipeGroupBox.Margin = new Padding(0, 0, 8, 0);
             recipeGroupBox.Name = "recipeGroupBox";
             recipeGroupBox.Padding = new Padding(12);
-            recipeGroupBox.Size = new Size(716, 168);
+            recipeGroupBox.Size = new Size(716, 375);
             recipeGroupBox.TabIndex = 9;
             recipeGroupBox.TabStop = false;
             recipeGroupBox.Text = "Recipe Parameters";
@@ -253,7 +253,7 @@ namespace AOIEquipmentControlSystem
             recipeTextBox.Name = "recipeTextBox";
             recipeTextBox.ReadOnly = true;
             recipeTextBox.ScrollBars = ScrollBars.Vertical;
-            recipeTextBox.Size = new Size(692, 113);
+            recipeTextBox.Size = new Size(692, 320);
             recipeTextBox.TabIndex = 0;
             // 
             // logGroupBox
@@ -264,7 +264,7 @@ namespace AOIEquipmentControlSystem
             logGroupBox.Margin = new Padding(8, 0, 0, 0);
             logGroupBox.Name = "logGroupBox";
             logGroupBox.Padding = new Padding(12);
-            logGroupBox.Size = new Size(1080, 168);
+            logGroupBox.Size = new Size(1080, 375);
             logGroupBox.TabIndex = 10;
             logGroupBox.TabStop = false;
             logGroupBox.Text = "Machine Log";
@@ -274,22 +274,20 @@ namespace AOIEquipmentControlSystem
             logTextBox.Dock = DockStyle.Fill;
             logTextBox.Location = new Point(12, 43);
             logTextBox.Margin = new Padding(0);
-            logTextBox.Multiline = true;
             logTextBox.Name = "logTextBox";
             logTextBox.ReadOnly = true;
-            logTextBox.ScrollBars = ScrollBars.Vertical;
-            logTextBox.Size = new Size(1056, 113);
+            logTextBox.Size = new Size(1056, 320);
             logTextBox.TabIndex = 0;
             // 
             // resultGroupBox
             // 
             resultGroupBox.Controls.Add(resultDataGridView);
             resultGroupBox.Dock = DockStyle.Fill;
-            resultGroupBox.Location = new Point(16, 288);
+            resultGroupBox.Location = new Point(16, 495);
             resultGroupBox.Margin = new Padding(0);
             resultGroupBox.Name = "resultGroupBox";
             resultGroupBox.Padding = new Padding(12);
-            resultGroupBox.Size = new Size(1812, 660);
+            resultGroupBox.Size = new Size(1812, 453);
             resultGroupBox.TabIndex = 11;
             resultGroupBox.TabStop = false;
             resultGroupBox.Text = "Inspection Result";
@@ -306,7 +304,7 @@ namespace AOIEquipmentControlSystem
             resultDataGridView.Name = "resultDataGridView";
             resultDataGridView.ReadOnly = true;
             resultDataGridView.RowHeadersWidth = 82;
-            resultDataGridView.Size = new Size(1788, 605);
+            resultDataGridView.Size = new Size(1788, 398);
             resultDataGridView.TabIndex = 0;
             // 
             // MainForm
@@ -351,7 +349,7 @@ namespace AOIEquipmentControlSystem
         private GroupBox recipeGroupBox;
         private TextBox recipeTextBox;
         private GroupBox logGroupBox;
-        private TextBox logTextBox;
+        private RichTextBox logTextBox;
         private GroupBox resultGroupBox;
         private DataGridView resultDataGridView;
     }

@@ -88,3 +88,6 @@
 
 ## Maintenance Update - 2026-05-30
 - [x] Improved MainForm dynamic layout to avoid text overlap.
+- [x] Rebalanced MainForm vertical layout so Recipe Parameters and Machine Log are easier to read.
+- [x] Added numbered Machine Log update headers for easier troubleshooting.
+- [x] Changed Machine Log headers to a blue multi-line operation block.
