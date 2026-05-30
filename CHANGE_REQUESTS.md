@@ -79,3 +79,48 @@
 ### 决定
 
 待评估。建议等 Phase 6 开始时再决定是否纳入。
+
+## CR-002 - HMI Operation Experience Polish
+
+- 状态：提出
+- 优先级：应该
+- 来源：Agent 建议 / Demo 优化想法
+- 提出日期：2026-05-31
+- 目标阶段：Phase 7.5 或 Phase 8 - 作品集整理
+
+### 需求内容
+
+改善 WinForms HMI 的工业设备操作体验，让画面更接近真实自动化设备软件。
+
+可能包含：
+
+- 顶部状态 Dashboard：Machine State、Device、Alarm、Recipe、Cycle Count。
+- 按钮依照操作类型分组：Startup、Production、Safety / Recovery。
+- 按钮根据机台状态启用或禁用，例如未 Initialize 前不可启动 Start Auto。
+- Alarm Banner 显示目前异常，让 Alarm 状态更醒目。
+- Log 显示不同等级，例如 INFO、ACTION、ALARM、ERROR。
+- Result table 使用 OK / NG 颜色标识，让检测结果更容易扫描。
+
+### 需求原因
+
+目前 HMI 功能可用，但视觉与操作体验还比较像基础表单。这个需求可以提升作品集展示效果，让系统更像工业设备 HMI。
+
+### 影响范围
+
+- UI：MainForm layout、状态显示、按钮分组、Alarm 显示、Log 显示、Result table 样式。
+- Services：可能需要调整 log level 或状态更新资料，但不应大改核心业务逻辑。
+- Models：如果需要 Cycle Count 或 Log Level，可能新增简单 model 或 enum。
+- Config：通常不需要修改。
+- Logs / Results：可能只影响显示方式，不改变文件格式。
+- README / Docs：完成后需要补充 HMI 操作说明与截图。
+
+### 决定
+
+接受方向，但暂不插队 Phase 5。
+
+UI polish 分为两类处理：
+
+- 当前 Phase 必要操作 UI：可以跟随当前 Phase 实作，例如 Phase 5 的 Communication Log、Device Status。
+- 展示体验 UI：先记录在本文件，等 Phase 5、Phase 6、Phase 7 核心功能完成后，再统一安排到 Phase 7.5 或 Phase 8。
+
+暂时不引入第三方 UI 套件、不改 WPF、不做复杂动画，保持 WinForms 项目轻量。
