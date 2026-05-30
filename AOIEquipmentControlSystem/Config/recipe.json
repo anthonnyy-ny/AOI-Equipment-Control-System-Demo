@@ -1,0 +1,13 @@
+// JavaScript source code
+{
+  "ProductName": "Lens_Module_A",
+  "ExposureTime": 120,
+  "Threshold": 85,
+  "MinArea": 5000,
+  "RoiX": 100,
+  "RoiY": 100,
+  "RoiWidth": 300,
+  "RoiHeight": 300,
+  "SavePath": "Results",
+  "MaxRetryCount": 3
+}
