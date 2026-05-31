@@ -255,8 +255,11 @@
       "bases:新建数据库": false
     }
   },
-  "active": "cd09cb1140e6f30d",
+  "active": "0e81bac58240d46f",
   "lastOpenFiles": [
+    "AOIEquipmentControlSystem/obj/Debug/net8.0-windows/AOIEquipmentControlSystem.csproj.BuildWithSkipAnalyzers",
+    "AOIEquipmentControlSystem/obj/Debug/net8.0-windows/yziyox14.ext~",
+    "AOIEquipmentControlSystem/Forms/MainForm.resx~RF90db3e8.TMP",
     "CHANGELOG.md",
     "TASKS.md",
     "AGENTS.md",
